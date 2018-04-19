@@ -1,5 +1,5 @@
-$(document).ready(function() {
-    $("button").click(function() {
+$(document).ready(function () {
+    $("button").click(function () {
         var name = $("#name").val();
         var imgUrl = $("#img").val();
         var q1 = $("#q1").val();
@@ -20,8 +20,12 @@ $(document).ready(function() {
         }
 
         $.post("/api/submit", newFriend)
-        .then(function(data) {
-          console.log(data);
-        });
+            .then(function (data) {
+                $("#friendName").html(`<h1>Your Match is: ${data.name}</h1>`)
+                var newImg = $("<img>");
+                newImg.attr("src", data.img);
+                $("#friendImage").html(newImg);
+                $('#myModal').modal("show")
+            });
     })
 })
