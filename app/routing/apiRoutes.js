@@ -10,6 +10,11 @@ var apiRoutes = {
             res.json(newFriend);
             console.log(friends);
         });
+    },
+    get: function(app) {
+        app.get("/api/list", function(req, res) {
+            return res.json(friends);
+        })
     }
 }
 module.exports = apiRoutes;

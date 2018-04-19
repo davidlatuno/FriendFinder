@@ -12,6 +12,7 @@ app.use(express.static("app/public"));
 require("./app/routing/htmlRoutes.js").home(app);
 require("./app/routing/htmlRoutes.js").survey(app);
 require("./app/routing/apiRoutes.js").post(app);
+require("./app/routing/apiRoutes.js").get(app);
 
 app.listen(PORT, function() {
     console.log("App listening on PORT " + PORT);
