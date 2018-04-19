@@ -1,6 +1,5 @@
 var path = require("path");
-
-var friends = []
+var friends = require("./../data/friends");
 
 var apiRoutes = {
     post: function (app) {
