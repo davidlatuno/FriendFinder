@@ -27,6 +27,13 @@ $(document).ready(function () {
             $('#myModal').modal("show");
             return;
         }
+
+        if (!(/(.jpg$|.png$|.jpeg$|.gif$|.webp)/i).test(imgUrl)) {
+            $("#friendName").html(`<h1>Error</h1>`)
+            $("#friendImage").html("Image url not supported");
+            $('#myModal').modal("show");
+            return;
+        }
         // Post endpoint and post most compatible friend
         $.post("/api/submit", newFriend)
             .then(function (data) {
