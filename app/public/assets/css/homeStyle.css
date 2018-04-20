@@ -1,0 +1,18 @@
+body {
+    background: url("../images/pexels-photo-697243.jpeg");
+}
+
+.jumbotron {
+    margin-top: 5%;
+    background: transparent !important;
+}
+
+.jumbotron h1 {
+    color: black;
+    font-size: 80px;
+}
+
+.jumbotron #sub {
+    color: black;
+    font-size: 24px;
+}
