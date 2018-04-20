@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("button").click(function () {
+        // Get User Input
         var name = $("#name").val();
         var imgUrl = $("#img").val();
         var q1 = $("#q1").val();
@@ -18,7 +19,7 @@ $(document).ready(function () {
             img: imgUrl,
             input: [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
         }
-
+        // Post endpoint and post most compatible friend
         $.post("/api/submit", newFriend)
             .then(function (data) {
                 $("#friendName").html(`<h1>Your Match is: ${data.name}</h1>`)

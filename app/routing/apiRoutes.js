@@ -1,20 +1,26 @@
+// Dependencies
 var path = require("path");
 var friends = require("./../data/friends");
 
 var apiRoutes = {
+    // Submit Survey
     post: function (app) {
         app.post("/api/submit", function (req, res) {
+            // User input
             var newFriend = req.body
+            // Hold all survey question arrays
             var matchArray = [];
+            // Hold user difference values
             var compareArray = [];
+            // Push arrays into match array
             for (var i = 0; i < friends.length; i++) {
                 matchArray.push(friends[i].input)
             }
+            // Compare function to add values to compareArray
             matchArray.forEach(compare);
-
-
-            console.log(compareArray);
+            // Send match to client side
             res.json(friends[getIndex()]);
+            // Add current input to friends array
             friends.push(newFriend);
 
             // Find Smallest number in compare array
@@ -29,8 +35,7 @@ var apiRoutes = {
                 }
                 return index;
             }
-
-
+            // Calculate compatibility values
             function compare(friend) {
                 var compareArrayIndex = 0;
                 for (var i = 0; i < newFriend.input.length; i++) {
@@ -46,6 +51,7 @@ var apiRoutes = {
             }
         });
     },
+    // URL route for friends array
     get: function (app) {
         app.get("/api/list", function (req, res) {
             return res.json(friends);
