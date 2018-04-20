@@ -19,6 +19,14 @@ $(document).ready(function () {
             img: imgUrl,
             input: [q1, q2, q3, q4, q5, q6, q7, q8, q9, q10]
         }
+
+        // Validation for empty fields
+        if (name === "" || imgUrl === "") {
+            $("#friendName").html(`<h1>Error</h1>`)
+            $("#friendImage").html("One or More fields not entered");
+            $('#myModal').modal("show");
+            return;
+        }
         // Post endpoint and post most compatible friend
         $.post("/api/submit", newFriend)
             .then(function (data) {
@@ -28,5 +36,8 @@ $(document).ready(function () {
                 $("#friendImage").html(newImg);
                 $('#myModal').modal("show")
             });
+        // Empty inputs after submit
+        $("#name").val('');
+        $("#img").val('');
     })
 })
